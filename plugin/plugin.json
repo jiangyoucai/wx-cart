@@ -1,0 +1,12 @@
+{
+  "publicComponents": {
+    "hello-component": "components/hello-component",
+    "cart": "components/cart/cart",
+    "slide": "components/slide/slide",
+    "panel": "components/panel/panel"
+  },
+  "pages": {
+    "hello-page": "pages/hello-page"
+  },
+  "main": "index.js"
+}

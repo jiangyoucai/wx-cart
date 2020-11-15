@@ -1,0 +1,13 @@
+<!--plugin/components/slide/slide.wxml-->
+<movable-area class="x100 y100">
+  <movable-view class="container x125 y100 x-start" direction="horizontal" x="{{x}}" y="{{y}}" bindchange="setChange">
+    <!-- content -->
+    <view class="x100">
+      <slot></slot>
+    </view>
+    <!-- action -->
+    <view class="container x25">
+      <text class="container x92 bgx clf x-center y-center" bindtap="setDelete">删除</text>
+    </view>
+  </movable-view>
+</movable-area>

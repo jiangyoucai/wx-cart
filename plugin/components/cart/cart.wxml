@@ -1,0 +1,62 @@
+<!--plugin/components/cart/cart.wxml-->
+<view class="container x100 x-column">
+  <block wx:for="{{cargo}}" wx:key="index">
+    <slide id="slide_{{index}}" option="{{item.option}}" bind:setChange="setChange" bind:setDelete="setDelete"
+      data-index="{{index}}">
+      <view class="container x92 x-rows b-bottom">
+        <!-- radio -->
+        <view class="x10 y60 ym20" bindtap="setOne" data-index="{{index}}">
+          <block wx:if="{{item.status}}">T</block>
+          <block wx:else>F</block>
+        </view>
+
+        <!-- thumb -->
+        <view class="container x25 i80 o-hidden x-center y-center">
+          <image src="{{item.thumb}}"></image>
+        </view>
+
+        <!-- data -->
+        <view class="container x75 x-column">
+          <!-- name -->
+          <text class="y50 lh2 fs12 cl3 o-hidden" bindtap="setProduct" data-index="{{index}}">{{item.name}}</text>
+          <!-- sku -->
+          <text class="y20 fs12 cl9" bindtap="setSKU" data-index="{{index}}">{{item.sub}}</text>
+          <!-- action -->
+          <view class="container y30 fs12 x-between">
+            <!-- price -->
+            <text class="x50 clx">￥{{item.fee}}</text>
+            <!-- steper -->
+            <stepper class="x50" option="{{item.option}}" bind:setTotal="setTotal" data-index="{{index}}" />
+          </view>
+        </view>
+      </view>
+    </slide>
+  </block>
+</view>
+
+<!-- action -->
+<cover-view class="container x92 y50 bgfa x-between p-fixed p-bottom">
+  <!-- total -->
+  <cover-view class="x25 y50" bindtap="setMore">
+    <block wx:if="{{status}}">T</block>
+    <block wx:else>F</block>
+  </cover-view>
+  <!-- fee -->
+  <cover-view class="x25 y50 fs18 x-rows">
+    <block wx:if="{{fee!==0}}">
+      ￥{{fee}}
+    </block>
+  </cover-view>
+  <!-- booking -->
+  <cover-view class="container x50 y50 x-center">
+    <block wx:if="{{total!==0}}">
+      <cover-view class="x100 y40 ym5 bgx clf t-center" style="border-radius: 50rpx;" bindtap="setBooking">
+        去结算({{total}})
+      </cover-view>
+    </block>
+    <block wx:else>
+      <cover-view class="x100 y40 ym5 bgc2 clf t-center" style="border-radius: 50rpx;">去结算
+      </cover-view>
+    </block>
+  </cover-view>
+</cover-view>

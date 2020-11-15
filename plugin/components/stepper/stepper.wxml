@@ -1,0 +1,6 @@
+<!--plugin/components/stepper/stepper.wxml-->
+<view class='container x100 y20 fs12 b-radius x-rows'>
+  <text class='x25 cl9 bgf2 t-center' bindtap='setTotal' data-index='0'>-</text>
+  <view class='x50 cl6 t-center'>{{option.total}}</view>
+  <text class='x25 cl9 bgf2 t-center' bindtap='setTotal' data-index='1'>+</text>
+</view>

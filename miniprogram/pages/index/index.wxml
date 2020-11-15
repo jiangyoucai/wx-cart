@@ -1,0 +1,5 @@
+<navigator id="nav" url="plugin://hello-plugin/hello-page">
+  Go to Plugin page
+</navigator>
+
+<cart bind:setProduct="setProduct" bind:setSKU="setSKU" bind:setBooking="setBooking"></cart>

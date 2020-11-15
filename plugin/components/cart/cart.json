@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "slide": "../slide/slide",
+    "stepper": "../stepper/stepper"
+  }
+}
