@@ -6,7 +6,9 @@
 1.复制文件
 
     复制plugin/components/cart文件夹到项目中
+    
     复制plugin/components/stepper文件夹到项目中
+    
     复制plugin/components/slide件夹到项目中
 
 2.引入组件
@@ -103,4 +105,4 @@
    
 # 截图
 
-![加减组件](http://cdn.tiantour.com/screenshot/cart.png)
+![购物车组件](http://cdn.tiantour.com/screenshot/cart.png)
