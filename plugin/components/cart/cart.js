@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    // array, 商品
+    option: Array
   },
 
   /**
@@ -19,78 +20,6 @@ Component({
     total: 0,
     // number, 金额
     fee: 0,
-    // array, 商品
-    cargo: [{
-      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
-      sub: "这是一个产品的套餐1",
-      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
-      total: 1,
-      fee: 199.0,
-      sku: 123456,
-      product: 1234,
-      option: {
-        min: 1,
-        max: 99,
-        increment: 1,
-        total: 1,
-      },
-    }, {
-      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
-      sub: "这是一个产品的套餐1",
-      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
-      total: 2,
-      fee: 199.0,
-      sku: 123456,
-      product: 1234,
-      option: {
-        min: 1,
-        max: 99,
-        increment: 1,
-        total: 2,
-      },
-    }, {
-      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
-      sub: "这是一个产品的套餐1",
-      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
-      total: 3,
-      fee: 199.0,
-      sku: 123456,
-      product: 1234,
-      option: {
-        min: 1,
-        max: 99,
-        increment: 1,
-        total: 3,
-      },
-    }, {
-      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
-      sub: "这是一个产品的套餐1",
-      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
-      total: 4,
-      fee: 199.0,
-      sku: 123456,
-      product: 1234,
-      option: {
-        min: 1,
-        max: 99,
-        increment: 1,
-        total: 4,
-      },
-    }, {
-      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
-      sub: "这是一个产品的套餐1",
-      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
-      total: 5,
-      fee: 199.0,
-      sku: 123456,
-      product: 1234,
-      option: {
-        min: 1,
-        max: 99,
-        increment: 1,
-        total: 5,
-      },
-    }]
   },
 
   /**
@@ -102,7 +31,7 @@ Component({
       // 获取索引
       const index = e.currentTarget.dataset.index
       // 获取状态
-      const status = !this.data.cargo[index].status
+      const status = !this.data.option[index].status
       // 调用方法
       this.checkOne(index, status)
     },
@@ -116,7 +45,7 @@ Component({
     // 设置单个
     checkOne(index, status) {
       // 判断更改状态，初始状态是否相同，若相同则返回
-      if (status === this.data.cargo[index].status) {
+      if (status === this.data.option[index].status) {
         return
       }
       // 判断更改状态
@@ -125,21 +54,21 @@ Component({
           // 结算数量自增
           this.data.total++
           // 结算金额累加
-          this.data.fee += this.data.cargo[index].fee * this.data.cargo[index].total
+          this.data.fee += this.data.option[index].fee * this.data.option[index].total
           break
         default: // 取消
           // 结算数量自减
           this.data.total--
           // 结算金额累减
-          this.data.fee -= this.data.cargo[index].fee * this.data.cargo[index].total
+          this.data.fee -= this.data.option[index].fee * this.data.option[index].total
           break
       }
       // 设置选项状态
-      this.data.cargo[index].status = status
+      this.data.option[index].status = status
 
       // 判断选中数量
       switch (this.data.total) {
-        case this.data.cargo.length: // 等于最大数量
+        case this.data.option.length: // 等于最大数量
           // 设置全选状态
           this.data.status = true
           break
@@ -150,7 +79,7 @@ Component({
       }
       // 更改数据状态
       this.setData({
-        cargo: this.data.cargo,
+        option: this.data.option,
         total: this.data.total,
         fee: this.data.fee,
         status: this.data.status
@@ -158,7 +87,7 @@ Component({
     },
     // 设置多个
     checkMore(status) {
-      for (let i = 0; i < this.data.cargo.length; i++) {
+      for (let i = 0; i < this.data.option.length; i++) {
         // 调用方法
         this.checkOne(i, status)
       }
@@ -168,32 +97,32 @@ Component({
       // 获取索引
       const index = e.currentTarget.dataset.index
       // 获取组件
-      const option = e.detail
+      const stepper = e.detail
       // 判断操作
-      switch (option.index) {
+      switch (stepper.index) {
         case "1": // 加
           // 选中，范围之内
-          if (this.data.cargo[index].status && this.data.cargo[index].total !== option.max) {
+          if (this.data.option[index].status && this.data.option[index].total !== stepper.max) {
             // 总额增加
-            this.data.fee += this.data.cargo[index].fee
+            this.data.fee += this.data.option[index].fee
           }
           break
         case "0": // 减
           // 选中，范围之内
-          if (this.data.cargo[index].status && this.data.cargo[index].total !== option.min) {
+          if (this.data.option[index].status && this.data.option[index].total !== stepper.min) {
             // 总额减计
-            this.data.fee -= this.data.cargo[index].fee
+            this.data.fee -= this.data.option[index].fee
           }
           break
       }
       // 同步配置
-      this.data.cargo[index].option = option
+      this.data.option[index].stepper = stepper
       // 同步数量
-      this.data.cargo[index].total = option.total
+      this.data.option[index].total = stepper.total
       // 写入数据
       this.setData({
         fee: this.data.fee,
-        cargo: this.data.cargo
+        option: this.data.option
       })
     },
     // 设置产品
@@ -202,7 +131,7 @@ Component({
       const index = e.currentTarget.dataset.index
       // 提交数据
       this.triggerEvent("setProduct", {
-        product: this.data.cargo[index].product
+        product: this.data.option[index].product
       })
     },
     // 设置套餐
@@ -211,8 +140,8 @@ Component({
       const index = e.currentTarget.dataset.index
       // 提交数据
       this.triggerEvent("setSKU", {
-        product: this.data.cargo[index].product,
-        sku: this.data.cargo[index].sku
+        product: this.data.option[index].product,
+        sku: this.data.option[index].sku
       })
     },
     // 滑动
@@ -228,7 +157,10 @@ Component({
             break
           default: // 其他，重置
             const identity = '#slide_' + this.data.index
-            this.selectComponent(identity).setReset
+            const slide = this.selectComponent(identity)
+            if (slide) {
+              slide.setReset()
+            }
             break
         }
         // 写入索引
@@ -241,36 +173,42 @@ Component({
     setDelete(e) {
       // 获取索引
       const index = e.currentTarget.dataset.index
-      const status = this.data.cargo[index].status
+      const status = this.data.option[index].status
       if (status) {
         // 总额减计
         this.checkOne(index, !status)
       }
       // 移除元素
-      this.data.cargo.splice(index, 1)
+      this.data.option.splice(index, 1)
+      // 剩余最后一个，选中，整体选中
+      if (this.data.option.length === 1 && this.data.option[0].status) {
+        this.data.status = true
+      }
+      
       // 提交数据
       this.setData({
         index: -1,
-        cargo: this.data.cargo
+        status: this.data.status,
+        option: this.data.option
       })
     },
     // 设置提交
     setBooking(e) {
-      let cargo = []
+      let option = []
       // 循环商品
-      for (let i = 0; i < this.data.cargo.length; i++) {
-        const item = this.data.cargo[i]
+      for (let i = 0; i < this.data.option.length; i++) {
+        const item = this.data.option[i]
         // 判断选中
         if (item.status) {
           // 加入数组
-          cargo.push(item)
+          option.push(item)
         }
       }
       // 提交数据
       this.triggerEvent("setBooking", {
         total: this.data.total,
         fee: this.data.fee,
-        cargo: cargo,
+        option: option,
       })
     }
   }

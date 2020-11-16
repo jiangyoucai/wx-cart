@@ -1,6 +1,7 @@
 <!--plugin/components/slide/slide.wxml-->
 <movable-area class="x100 y100">
-  <movable-view class="container x125 y100 x-start" direction="horizontal" x="{{x}}" y="{{y}}" bindchange="setChange">
+  <movable-view class="container x125 y100 x-start" direction="horizontal" damping="100" x="{{x}}" y="{{y}}"
+    bindchange="setChange">
     <!-- content -->
     <view class="x100">
       <slot></slot>

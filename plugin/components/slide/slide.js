@@ -2,9 +2,7 @@
 Component({
   behaviors: ['wx://component-export'],
   export () {
-    return {
-      setReset: this.setReset()
-    }
+    return this
   },
   /**
    * 组件的属性列表
@@ -27,16 +25,18 @@ Component({
   methods: {
     // 滑动
     setChange(e) {
+      // 判断滑动
       switch (e.detail.source) {
-        case "touch":
+        case "touch": // 滑动
+          // 判断滑动距离
           if (e.detail.x < 0) {
             this.triggerEvent("setChange", e.detail)
           }
           break
         default:
-          // todo
           break
       }
+
     },
     // 重置
     setReset(e) {
@@ -47,6 +47,7 @@ Component({
     },
     // 事件
     setDelete(e) {
+      this.setReset(e)
       this.triggerEvent("setDelete", e.detail)
     }
   }

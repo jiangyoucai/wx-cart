@@ -2,4 +2,4 @@
   Go to Plugin page
 </navigator>
 
-<cart bind:setProduct="setProduct" bind:setSKU="setSKU" bind:setBooking="setBooking"></cart>
+<cart option="{{option}}" bind:setProduct="setProduct" bind:setSKU="setSKU" bind:setBooking="setBooking"></cart>

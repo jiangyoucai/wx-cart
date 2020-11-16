@@ -4,18 +4,77 @@ Page({
     items: [],
     currentItem: 0,
     index: -1,
-    option: {
-      cargo: [{
-          text: "这是第一行文字",
-        },
-        {
-          text: "这是第二行文字",
-        },
-        {
-          text: "这是第三行文字",
-        }
-      ]
-    }
+    option: [{
+      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
+      sub: "这是一个产品的套餐1",
+      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
+      total: 1,
+      fee: 199.0,
+      sku: 123456,
+      product: 1234,
+      stepper: {
+        min: 1,
+        max: 99,
+        increment: 1,
+        total: 1,
+      },
+    }, {
+      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
+      sub: "这是一个产品的套餐1",
+      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
+      total: 2,
+      fee: 199.0,
+      sku: 123456,
+      product: 1234,
+      stepper: {
+        min: 1,
+        max: 99,
+        increment: 1,
+        total: 2,
+      },
+    }, {
+      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
+      sub: "这是一个产品的套餐1",
+      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
+      total: 3,
+      fee: 199.0,
+      sku: 123456,
+      product: 1234,
+      stepper: {
+        min: 1,
+        max: 99,
+        increment: 1,
+        total: 3,
+      },
+    }, {
+      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
+      sub: "这是一个产品的套餐1",
+      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
+      total: 4,
+      fee: 199.0,
+      sku: 123456,
+      product: 1234,
+      stepper: {
+        min: 1,
+        max: 99,
+        increment: 1,
+        total: 4,
+      },
+    }, {
+      name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
+      sub: "这是一个产品的套餐1",
+      thumb: "https://cdn.tiantour.com/logo/fundipper.png",
+      total: 5,
+      fee: 199.0,
+      sku: 123456,
+      product: 1234,
+      stepper: {
+        min: 1,
+        max: 99,
+        increment: 1,
+        total: 5,
+      },
+    }]
 
   },
   onLoad: function () {

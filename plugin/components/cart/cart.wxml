@@ -1,7 +1,7 @@
 <!--plugin/components/cart/cart.wxml-->
 <view class="container x100 x-column">
-  <block wx:for="{{cargo}}" wx:key="index">
-    <slide id="slide_{{index}}" option="{{item.option}}" bind:setChange="setChange" bind:setDelete="setDelete"
+  <block wx:for="{{option}}" wx:key="index">
+    <slide id="slide_{{index}}" bind:setChange="setChange" bind:setDelete="setDelete"
       data-index="{{index}}">
       <view class="container x92 x-rows b-bottom">
         <!-- radio -->
@@ -26,7 +26,7 @@
             <!-- price -->
             <text class="x50 clx">￥{{item.fee}}</text>
             <!-- steper -->
-            <stepper class="x50" option="{{item.option}}" bind:setTotal="setTotal" data-index="{{index}}" />
+            <stepper class="x50" option="{{item.stepper}}" bind:setTotal="setTotal" data-index="{{index}}" />
           </view>
         </view>
       </view>
