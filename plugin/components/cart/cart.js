@@ -51,11 +51,11 @@ Component({
         // 调用方法
         if (i !== index) {
           // 获取组件
-          const slide = this.selectComponent('#slide' + i)
+          const self = this.selectComponent('#slide' + i)
           // 判断状态
-          if (slide.data.x !== 0) {
+          if (self.data.x !== 0) {
             // 滑动复位
-            slide.setReset()
+            self.setReset()
           }
         }
       }
