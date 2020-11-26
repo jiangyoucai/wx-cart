@@ -1,0 +1,24 @@
+<!--plugin/components/popup/popup.wxml-->
+<!-- show button -->
+<view bindtap="setStatus" hidden="{{option.status}}">
+  <slot name="action"></slot>
+</view>
+<!-- background panel -->
+<view class="w100 h100 o-hidden p-fixed p-bottom" style="background:rgba(0,0,0,0.7);" hidden="{{!option.status}}"
+  bindtap="setStatus"></view>
+<!-- popup panel -->
+<view class="x100 bgfa b-radius p-fixed p-bottom" hidden="{{!option.status}}">
+  <!-- container -->
+  <view class="container x-column">
+    <!-- title -->
+    <view class="x92 y40 b-radius t-center" hidden="{{!option.title}}">
+      <text>{{option.title}}</text>
+    </view>
+    <!-- content -->
+    <scroll-view class="container x100 y{{option.height}} bgf b-radius" enable-flex="true" scroll-y="true">
+      <slot name="data"></slot>
+    </scroll-view>
+    <!-- action -->
+    <text class="y40 xp4 p-absolute p-right" bindtap="setStatus">关闭</text>
+  </view>
+</view>

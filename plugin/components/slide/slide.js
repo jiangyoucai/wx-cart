@@ -1,8 +1,7 @@
 // plugin/components/slide/slide.js
 Component({
-  behaviors: ['wx://component-export'],
-  export () {
-    return this
+  options: {
+    multipleSlots: true,
   },
   /**
    * 组件的属性列表
@@ -17,6 +16,7 @@ Component({
   data: {
     x: 0,
     y: 0,
+    z: 0
   },
 
   /**
@@ -28,27 +28,44 @@ Component({
       // 判断滑动
       switch (e.detail.source) {
         case "touch": // 滑动
-          // 判断滑动距离
-          if (e.detail.x < 0) {
+          // 屏幕宽度
+          const width = wx.getSystemInfoSync().windowWidth * 0.25
+          // 判断位置
+          if (e.detail.x === -width.toFixed(1)) {
+            // 设置数值
+            this.setData({
+              x: e.detail.x
+            })
+            // 提交数据
             this.triggerEvent("setChange", e.detail)
           }
           break
-        default:
+        case "": // 复位
+          if (e.detail.x === 0) {
+            // 判断方法
+            if (!this.data.z) {
+              // 提交数据
+              this.triggerEvent("setDelete", e.detail)
+            }
+          }
           break
       }
-
+    },
+    // 删除
+    setDelete(e) {
+      this.setData({
+        x: 0,
+        y: 0,
+        z: 0
+      })
     },
     // 重置
     setReset(e) {
       this.setData({
         x: 0,
-        y: 0
+        y: 0,
+        z: 1
       })
-    },
-    // 事件
-    setDelete(e) {
-      this.setReset(e)
-      this.triggerEvent("setDelete", e.detail)
     }
   }
 })

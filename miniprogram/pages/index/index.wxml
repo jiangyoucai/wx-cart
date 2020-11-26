@@ -2,4 +2,36 @@
   Go to Plugin page
 </navigator>
 
+<popup option="{{popup}}">
+  <view slot="action">
+    <text>购物车</text>
+  </view>
+  <view slot="data" class="container x100 x-column">
+    <text>1bind:setSKU="setSKU" bind:setBooking="setBooking"1bind:setSKU="setSKU" bind:setBooking="setBooking"</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+    <text>2</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+    <text>3</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+    <text>4</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+    <text>5</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+    <text>6</text>
+    <text>x</text>
+    <text>y</text>
+    <text>z</text>
+  </view>
+</popup>
+
 <cart option="{{option}}" bind:setProduct="setProduct" bind:setSKU="setSKU" bind:setBooking="setBooking"></cart>

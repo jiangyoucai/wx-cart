@@ -14,8 +14,6 @@ Component({
   data: {
     // bool, 状态
     status: false,
-    // number, 序号
-    index: -1,
     // number, 数量
     total: 0,
     // number, 金额
@@ -41,6 +39,26 @@ Component({
       const status = !this.data.status
       // 调用方法
       this.checkMore(status)
+    },
+    // 滑动
+    setChange(e) {
+      // 获取索引
+      const index = e.currentTarget.dataset.index
+      this.checkChange(index)
+    },
+    checkChange(index) {
+      for (let i = 0; i < this.data.option.length; i++) {
+        // 调用方法
+        if (i !== index) {
+          // 获取组件
+          const slide = this.selectComponent('#slide' + i)
+          // 判断状态
+          if (slide.data.x !== 0) {
+            // 滑动复位
+            slide.setReset()
+          }
+        }
+      }
     },
     // 设置单个
     checkOne(index, status) {
@@ -144,31 +162,6 @@ Component({
         sku: this.data.option[index].sku
       })
     },
-    // 滑动
-    setChange(e) {
-      // 获取索引
-      const index = e.currentTarget.dataset.index
-      // 判断是否换行
-      if (this.data.index !== index) {
-        // 判断是否第一
-        switch (this.data.index) {
-          case -1: // 默认，跳过
-            // todo
-            break
-          default: // 其他，重置
-            const identity = '#slide_' + this.data.index
-            const slide = this.selectComponent(identity)
-            if (slide) {
-              slide.setReset()
-            }
-            break
-        }
-        // 写入索引
-        this.setData({
-          index: index,
-        })
-      }
-    },
     // 设置删除
     setDelete(e) {
       // 获取索引
@@ -184,10 +177,9 @@ Component({
       if (this.data.option.length === 1 && this.data.option[0].status) {
         this.data.status = true
       }
-      
+
       // 提交数据
       this.setData({
-        index: -1,
         status: this.data.status,
         option: this.data.option
       })

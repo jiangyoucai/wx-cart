@@ -18,6 +18,10 @@ Page({
         increment: 1,
         total: 1,
       },
+      slide: {
+        x: 0,
+        y: 0
+      }
     }, {
       name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
       sub: "这是一个产品的套餐1",
@@ -32,6 +36,10 @@ Page({
         increment: 1,
         total: 2,
       },
+      slide: {
+        x: 0,
+        y: 0
+      }
     }, {
       name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
       sub: "这是一个产品的套餐1",
@@ -46,6 +54,10 @@ Page({
         increment: 1,
         total: 3,
       },
+      slide: {
+        x: 0,
+        y: 0
+      }
     }, {
       name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
       sub: "这是一个产品的套餐1",
@@ -60,6 +72,10 @@ Page({
         increment: 1,
         total: 4,
       },
+      slide: {
+        x: -100,
+        y: 0
+      }
     }, {
       name: "债务危机 我的应对原则 桥水创始人 《原则》瑞.达利欧最新作品",
       sub: "这是一个产品的套餐1",
@@ -74,8 +90,16 @@ Page({
         increment: 1,
         total: 5,
       },
-    }]
-
+      slide: {
+        x: -93.8,
+        y: 0
+      }
+    }],
+    popup: {
+      status: false,
+      title: "购物车",
+      height: 480
+    }
   },
   onLoad: function () {
     plugin.sayHello();

@@ -1,9 +1,9 @@
 <!--plugin/components/cart/cart.wxml-->
 <view class="container x100 x-column">
   <block wx:for="{{option}}" wx:key="index">
-    <slide id="slide_{{index}}" bind:setChange="setChange" bind:setDelete="setDelete"
-      data-index="{{index}}">
-      <view class="container x92 x-rows b-bottom">
+    <slide id="slide{{index}}" bind:setChange="setChange" bind:setDelete="setDelete" data-index="{{index}}">
+      <!-- data -->
+      <view slot="data" class="container x92 x-rows b-bottom" option="{{item.slide}}">
         <!-- radio -->
         <view class="x10 y60 ym20" bindtap="setOne" data-index="{{index}}">
           <block wx:if="{{item.status}}">T</block>
@@ -30,12 +30,14 @@
           </view>
         </view>
       </view>
+      <!-- action -->
+      <text slot="action" class="container x92 y100 bgx clf x-center y-center">删除</text>
     </slide>
   </block>
 </view>
 
 <!-- action -->
-<cover-view class="container x92 y50 bgfa x-between p-fixed p-bottom">
+<cover-view class="container x92 y50 bgfa x-between p-fixed p-bottom" hidden="{{option.length<=0}}">
   <!-- total -->
   <cover-view class="x25 y50" bindtap="setMore">
     <block wx:if="{{status}}">T</block>

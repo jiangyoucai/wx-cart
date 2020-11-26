@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "hello-list": "plugin://hello-plugin/hello-component",
-    "cart": "plugin://hello-plugin/cart"
+    "cart": "plugin://hello-plugin/cart",
+    "popup":"plugin://hello-plugin/popup"
   }
 }

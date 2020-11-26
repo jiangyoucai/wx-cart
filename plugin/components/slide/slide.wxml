@@ -1,14 +1,14 @@
 <!--plugin/components/slide/slide.wxml-->
-<movable-area class="x100 y100">
-  <movable-view class="container x125 y100 x-start" direction="horizontal" damping="100" x="{{x}}" y="{{y}}"
-    bindchange="setChange">
-    <!-- content -->
+<movable-area class="container x100 y100 o-hidden">
+  <movable-view class="container x125 y100 x-start" direction="horizontal" damping="100" x="{{x}}"
+    y="{{y}}" bindchange="setChange">
+    <!-- data -->
     <view class="x100">
-      <slot></slot>
+      <slot name="data"></slot>
     </view>
     <!-- action -->
-    <view class="container x25">
-      <text class="container x92 bgx clf x-center y-center" bindtap="setDelete">删除</text>
+    <view class="x25" bindtap="setDelete">
+      <slot name="action"></slot>
     </view>
   </movable-view>
 </movable-area>
